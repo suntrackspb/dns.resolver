@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DNS Resolver - Поиск поддоменов и IP</title>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+  <!-- Переключатель темы -->
+  <div class="theme-switcher" onclick="toggleTheme()" title="Переключить тему">
+    <div class="theme-icon" id="themeIcon">🌙</div>
+  </div>
+
+  <div class="header">
+    <h1>🔍 DNS Resolver</h1>
+    <p>Поиск поддоменов и IP-адресов с группировкой по подсетям</p>
+  </div>
+
+  <div class="search-form">
+    <label>
+      <input type="text" id="domainInput" placeholder="example.com" />
+    </label>
+    <button class="btn btn-primary" onclick="search()">🔍 Искать</button>
+    <button class="btn btn-secondary" id="toggleBtn" onclick="toggleIPView()">
+      Простой вид IP
+    </button>
+  </div>
+
+  <!-- Прогресс бар -->
+  <div id="progressContainer" class="progress-container" style="display: none;">
+    <div id="progressBar" class="progress-bar"></div>
+    <div id="progressText" class="progress-text">Обработка...</div>
+  </div>
+
+  <div class="container">
+    <!-- Блок поддоменов -->
+    <div class="block">
+      <div class="block-header">
+        <h3 class="block-title">📋 Поддомены</h3>
+        <div class="block-actions">
+          <button class="copy-btn" onclick="copyToClipboard('subOutput')" title="Копировать все">
+            📋 Копировать
+          </button>
+          <button class="export-btn" onclick="exportToJSON('full')" title="Экспорт полных данных">
+            💾 Экспорт
+          </button>
+        </div>
+      </div>
+      <pre id="subOutput" class="block-content">
+🔍 Введите домен и нажмите "Искать" для начала...
+      </pre>
+    </div>
+
+    <!-- Блок IP адресов -->
+    <div class="block">
+      <div class="block-header">
+        <h3 class="block-title">🌐 IP-адреса и подсети</h3>
+        <div class="block-actions">
+          <button class="copy-btn" onclick="copyToClipboard('ipOutput')" title="Копировать все">
+            📋 Всё
+          </button>
+          <button class="copy-btn" onclick="copyCIDROnly()" title="Копировать только CIDR">
+            🎯 CIDR
+          </button>
+          <button class="copy-btn" onclick="copyIPsOnly()" title="Копировать только IP">
+            📝 IP
+          </button>
+          <button class="export-btn" onclick="exportToJSON('cidr')" title="Экспорт CIDR">
+            💾 CIDR
+          </button>
+          <button class="export-btn" onclick="exportToJSON('ips')" title="Экспорт IP">
+            💾 IP
+          </button>
+        </div>
+      </div>
+      <pre id="ipOutput" class="block-content">
+🌐 IP-адреса и подсети появятся здесь...
+      </pre>
+    </div>
+  </div>
+
+  <script src="./js/script.js"></script>
+</body>
+</html>

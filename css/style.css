@@ -1,0 +1,325 @@
+:root {
+  --bg-primary: #f8f9fa;
+  --bg-secondary: white;
+  --bg-tertiary: #fafbfc;
+  --text-primary: #333;
+  --text-secondary: #2c3e50;
+  --text-muted: #7f8c8d;
+  --border-color: #e1e8ed;
+  --border-color-alt: #ecf0f1;
+  --shadow: rgba(0,0,0,0.1);
+  --accent-primary: #3498db;
+  --accent-primary-hover: #2980b9;
+  --accent-secondary: #95a5a6;
+  --accent-secondary-hover: #7f8c8d;
+  --block-header: #34495e;
+  --success-color: #27ae60;
+  --error-color: #e74c3c;
+  --warning-color: #f39c12;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #242424;
+  --text-primary: #e0e0e0;
+  --text-secondary: #ffffff;
+  --text-muted: #a0a0a0;
+  --border-color: #404040;
+  --border-color-alt: #363636;
+  --shadow: rgba(0,0,0,0.3);
+  --accent-primary: #4a9eff;
+  --accent-primary-hover: #3d8bdb;
+  --accent-secondary: #6c7b7d;
+  --accent-secondary-hover: #5a6769;
+  --block-header: #1e2832;
+  --success-color: #2ecc71;
+  --error-color: #e74c3c;
+  --warning-color: #f39c12;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin: 0;
+  padding: 2em;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.theme-switcher {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: 25px;
+  padding: 0.5em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  box-shadow: 0 2px 8px var(--shadow);
+  transition: all 0.3s ease;
+  font-size: 1.2em;
+}
+
+.theme-switcher:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.theme-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.theme-switcher:hover .theme-icon {
+  transform: rotate(180deg);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+.header h1 {
+  color: var(--text-secondary);
+  margin-bottom: 1em;
+}
+
+.header p {
+  color: var(--text-muted);
+}
+
+.search-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2em;
+}
+
+.search-form input {
+  padding: 0.8em 1em;
+  font-size: 1em;
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  min-width: 250px;
+  transition: border-color 0.3s;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.search-form input:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+}
+
+.search-form input::placeholder {
+  color: var(--text-muted);
+}
+
+.btn {
+  padding: 0.8em 1.5em;
+  font-size: 1em;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 500;
+}
+
+.btn-primary {
+  background: var(--accent-primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--accent-primary-hover);
+}
+
+.btn-secondary {
+  background: var(--accent-secondary);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: var(--accent-secondary-hover);
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2em;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.block {
+  position: relative;
+  flex: 1 1 400px;
+  max-width: 100%;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px var(--shadow);
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+.block-header {
+  background: var(--block-header);
+  color: white;
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.block-title {
+  margin: 0;
+  font-size: 1.1em;
+  font-weight: 500;
+}
+
+.block-actions {
+  display: flex;
+  gap: 0.5em;
+}
+
+.copy-btn, .export-btn {
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: white;
+  padding: 0.4em 0.8em;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background 0.3s;
+}
+
+.copy-btn:hover, .export-btn:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+.block-content {
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+  padding: 1.5em;
+  background: var(--bg-tertiary);
+  border: none;
+  height: 400px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  font-size: 0.9em;
+  line-height: 1.5;
+  margin: 0;
+  color: var(--text-primary);
+  transition: background-color 0.3s ease;
+}
+
+.progress-container {
+  background: var(--border-color-alt);
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 1em 0;
+  height: 8px;
+}
+
+.progress-bar {
+  background: linear-gradient(90deg, var(--accent-primary), var(--success-color));
+  height: 100%;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  text-align: center;
+  margin-top: 0.5em;
+  color: var(--text-muted);
+  font-size: 0.9em;
+}
+
+.status-indicator {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 0.5em;
+}
+
+.status-loading {
+  background: var(--warning-color);
+  animation: pulse 1.5s infinite;
+}
+
+.status-success {
+  background: var(--success-color);
+}
+
+.status-error {
+  background: var(--error-color);
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.section-divider {
+  border-top: 2px solid var(--border-color-alt);
+  margin: 1em 0;
+  padding-top: 1em;
+}
+
+.ip-section {
+  margin-bottom: 1.5em;
+}
+
+.ip-section-title {
+  font-weight: bold;
+  color: var(--text-secondary);
+  margin-bottom: 0.5em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--border-color-alt);
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 1em;
+  }
+  
+  .theme-switcher {
+    top: 10px;
+    right: 10px;
+    font-size: 1em;
+  }
+  
+  .container {
+    flex-direction: column;
+  }
+  
+  .block {
+    flex: none;
+  }
+  
+  .block-content {
+    height: 350px;
+  }
+  
+  .search-form {
+    flex-direction: column;
+  }
+  
+  .search-form input {
+    min-width: auto;
+    width: 100%;
+  }
+} 
