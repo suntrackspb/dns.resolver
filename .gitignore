@@ -53,6 +53,7 @@ yarn.lock
 dist/
 build/
 .rules_project/
+backend/
 
 # Личные заметки разработчика
 TODO.md
