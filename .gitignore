@@ -54,6 +54,7 @@ dist/
 build/
 .rules_project/
 backend/
+example/
 
 # Личные заметки разработчика
 TODO.md
